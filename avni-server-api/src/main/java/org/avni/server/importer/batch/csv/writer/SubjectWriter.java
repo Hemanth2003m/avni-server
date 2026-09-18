@@ -96,7 +96,7 @@ public class SubjectWriter extends EntityWriter {
         setFirstName(row, individual, allErrorMsgs);
         if (subjectType.isAllowMiddleName())
             individual.setMiddleName(row.get(SubjectHeadersCreator.middleName));
-        individual.setLastName(row.get(SubjectHeadersCreator.lastName));
+        setLastName(row, individual, allErrorMsgs);
         setProfilePicture(subjectType, individual, row, allErrorMsgs);
         if (subjectType.isPerson())
             setDateOfBirth(individual, row, allErrorMsgs);
