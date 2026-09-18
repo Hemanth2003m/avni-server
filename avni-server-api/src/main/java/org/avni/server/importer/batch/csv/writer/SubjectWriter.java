@@ -141,6 +141,22 @@ public class SubjectWriter extends EntityWriter {
         individual.setFirstName(firstName);
     }
 
+    private static void setLastName(Row row, Individual individual, List<String> allErrorMsgs) {
+    String lastName = row.get(SubjectHeadersCreator.lastName);
+
+    if (!StringUtils.hasText(lastName)) {
+        allErrorMsgs.add(
+                String.format(
+                        "Value required for mandatory field: '%s'",
+                        SubjectHeadersCreator.lastName
+                )
+        );
+        return;
+    }
+
+    individual.setLastName(lastName);
+}
+
     private SubjectType setSubjectType(Row row, Individual individual, List<String> allErrorMsgs, String type) {
         String subjectTypeChosen = type.split("---")[1];
         String subjectTypeValue = row.get(SubjectHeadersCreator.subjectTypeHeader);
